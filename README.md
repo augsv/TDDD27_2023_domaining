@@ -1,92 +1,37 @@
 # TDDD27_2023_domaining
 
+Important! This is a pull mirror of a github repository with the same name. It was needed because the CI/CD runners in gitlab.liu.se does not seem to be configured to be able to deploy to external services.
 
+## Functional specification
 
-## Getting started
+The goal of this project is to create a site which helps people to come up with brandable names for their startup, like https://squadhelp.com/.
+On the site, 'sellers' will be able to list and sell domain names (such as example.com) to 'buyers'.
+If I have time, there will also be a function where startups get to host naming contests.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+It is basically an e-commerce site specialized in buying and selling domains.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## Techonological specification
 
-## Add your files
+This section describes the technologies that will realize my functional specification.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+For authentication, I will integrate something like Auth0.
+For payments, I will integrate something like Stripe.
 
-```
-cd existing_repo
-git remote add origin https://gitlab.liu.se/augsv102/tddd27_2023_domaining.git
-git branch -M main
-git push -uf origin main
-```
+### Client framework: Next.js
 
-## Integrate with your tools
+The main reason that I chose Next.js is that I get to choose rendering type for each individual page of the application. For marketing pages, I want them to be statically generated in order to cache them easily on a CDN and get good SEO. For more dynamic pages (such as a list of domains that are currently offered), I can choose server-side rendering to build the web page on request, alternatively, build the page at the client. I also love the fact that Next.js comes with Tailwind css out-of-the-box, since I became a big fan of styling my DOM directly in the HTML from using Bootstrap in the past. I absolutely don't like creating a whole new css file and come up with pointless class names just to add a grid layout to a page. However, I like the fact of having the option to create and import separate css files when creating specialized css such as animations. I chose to use Next.js with Typescript,  a language with which features I have never worked with before.
 
-- [ ] [Set up project integrations](https://gitlab.liu.se/augsv102/tddd27_2023_domaining/-/settings/integrations)
+I have never worked with Next.js before, however, I have worked with similar frameworks such as Gatsby. The plan is to deploy my frontend on Vercel. My goal is also to become better at React, a framework that I am not 100% comfortable with yet.
 
-## Collaborate with your team
+In the future, it is possible that I might integrate a headless CMS with the frontend, however, for this course this will not be my main priority.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+### Server framework: Express.js
 
-## Test and Deploy
+My first consideration was how I was going to serve information about domain listings. I wanted a high-performant small API that could be accessed by my frontend.
+I was considering going for a more full-fledged framework like Ruby on rails for the backend, however, when I explained my needs to ChatGPT I found that Express.js probably is the best choice. I chose Express.js because of performance reasons, possibly sacrificing development time. I have always been sceptical to backends built on javascript, but I find the non-blocking event loop in Node.js to make up for it.
 
-Use the built-in continuous integration in GitLab.
+As a fun fact, I took this weekend off to deploy my backend. I did this because, due to my experience, it is easier to deploy a hello world application rather than a complex application that communicates with 100 other APIs and databases. I have worked with Google Cloud Platform in the past, but this time I wanted to learn about AWS, a service that I had never worked with before. It took me about two days. I created an account on AWS, set up a cluster, task definition, and Fargate service in ECS. I set up an image repository in ECR, and created a Dockerfile in my own repository. I set up a CI/CD pipeline in github (by all means, check out .github/workflows/docker-image.yml for some epic devops stuff), with the necessary secret environment variables stored in the Github UI. Finally, I created created a load balancer service in EC2 togther with an Elastic IP, in order to get a static IPv4 address to my backend API. When I push to my main branch in my github repo, an automatic build and deploy is triggered! I have already learnt a lot of new stuff about CI/CD in this project, which is very nice!
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+The service is deployed at http://13.49.9.198/, and I already owned the domain name nlu.se from before this project, so I set up a DNS server in Route 53 that points http://api.nlu.se to this IP-address. However, as of the time of writing, it seems like the DNS change has not progagated fully yet.
 
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+This is my starting point, but as my project develops I think that the backend will expand to something of a microservices architecture.
