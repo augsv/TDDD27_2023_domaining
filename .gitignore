@@ -40,3 +40,4 @@
 
 # Dependencies
 /backend/node_modules
+/backend/*.sqlite
