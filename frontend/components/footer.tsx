@@ -6,32 +6,32 @@ export default function Footer() {
                 <nav className="flex flex-wrap justify-center -mx-5 -my-2">
                     <div className="px-5 py-2">
                         <a href="#" className="text-base leading-6 text-gray-500 hover:text-gray-900">
-                            About
+                            Om oss
                         </a>
                     </div>
                     <div className="px-5 py-2">
                         <a href="#" className="text-base leading-6 text-gray-500 hover:text-gray-900">
-                            Blog
+                            Bli säljare
                         </a>
                     </div>
                     <div className="px-5 py-2">
                         <a href="#" className="text-base leading-6 text-gray-500 hover:text-gray-900">
-                            Team
+                            Så funkar det
                         </a>
                     </div>
                     <div className="px-5 py-2">
                         <a href="#" className="text-base leading-6 text-gray-500 hover:text-gray-900">
-                            Pricing
+                            Priser
                         </a>
                     </div>
                     <div className="px-5 py-2">
                         <a href="#" className="text-base leading-6 text-gray-500 hover:text-gray-900">
-                            Contact
+                            Kontakt
                         </a>
                     </div>
                     <div className="px-5 py-2">
                         <a href="#" className="text-base leading-6 text-gray-500 hover:text-gray-900">
-                            Terms
+                            Villkor
                         </a>
                     </div>
                 </nav>
@@ -68,7 +68,7 @@ export default function Footer() {
                     </a>
                 </div>
                 <p className="mt-8 text-base leading-6 text-center text-gray-400">
-                    © 2021 SomeCompany, Inc. All rights reserved.
+                    © 2023 nlu.se.
                 </p>
             </div>
         </section>

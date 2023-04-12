@@ -14,13 +14,13 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/
 const products = [
   { name: 'Premiumdomäner', description: 'Ett urval av våra högst värdesatta domäner', href: '#', icon: ChartPieIcon },
   { name: 'Korta domäner', description: 'Domäner med tre-, fyra- eller fem bokstäver', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  { name: 'Bli säljare', description: 'Äger du ett domännamn? Sälj det hos oss!', href: '#', icon: FingerPrintIcon },
+  /* { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
+  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon }, */
 ]
 const callsToAction = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
+  { name: 'Se demo', href: '#', icon: PlayCircleIcon },
+  { name: 'Kontakta oss', href: '#', icon: PhoneIcon },
 ]
 
 function classNames(...classes: string[]) {
@@ -102,13 +102,13 @@ export default function Header() {
           </Popover>
 
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Features
+            Namntävlingar
           </a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Marketplace
+            Så funkar det
           </a>
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Company
+            Om oss
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -172,19 +172,19 @@ export default function Header() {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Features
+                  Namntävlingar
                 </a>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Marketplace
+                  Så funkar det
                 </a>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Company
+                  Om oss
                 </a>
               </div>
               <div className="py-6">
