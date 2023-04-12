@@ -1,12 +1,19 @@
-import Footer from './footer'
-import Header from './header'
+import React, { FC, ReactNode } from 'react';
+import Footer from './footer';
+import Header from './header';
 
-export default function Layout({ children }) {
-    return (
-        <>
-            <Header/>
-            { children }
-            <Footer/>
-        </>
-    )
+interface LayoutProps {
+  children: ReactNode;
 }
+
+const Layout: FC<LayoutProps> = ({ children }) => {
+  return (
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
+};
+
+export default Layout;
