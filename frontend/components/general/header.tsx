@@ -11,6 +11,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const products = [
   { name: 'Premiumdomäner', description: 'Ett urval av våra högst värdesatta domäner', href: '#', icon: ChartPieIcon },
@@ -39,7 +40,7 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">nlu.se</span>
-              <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+              <Image className="h-8 w-auto" width={300} height={300} src="/mark.svg" alt="" />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -106,7 +107,7 @@ export default function Header() {
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+              <Image className="h-8 w-auto" width={300} height={300} src="/mark.svg" alt="" />
             </a>
             <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={() => setMobileMenuOpen(false)}>
               <span className="sr-only">Close menu</span>
@@ -139,7 +140,7 @@ export default function Header() {
                 <Link href="/omoss" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Om oss</Link>
 
                 <div className="py-6">
-                    <Link href="/loggain" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Logga in</Link>
+                    <a href="/api/auth/login" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Logga in</a>
                 </div>
               </div>
             </div>

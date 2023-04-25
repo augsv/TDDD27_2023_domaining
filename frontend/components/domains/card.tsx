@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FC, ReactNode } from "react";
 
 interface CardProps {
@@ -5,12 +6,15 @@ interface CardProps {
 }
   
 const Card: FC<CardProps> = ({ props }) => {
+    const width = 500
+    const height = 500
+
     return (
         <>
             <div>
                 <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <a href="#">
-                        <img className="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
+                        <Image className="rounded-t-lg" width={width} height={height} src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
                     </a>
                     <div className="p-5">
                         <a href="#">
