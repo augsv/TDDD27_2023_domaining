@@ -10,6 +10,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link'
 
 const products = [
   { name: 'Premiumdomäner', description: 'Ett urval av våra högst värdesatta domäner', href: '#', icon: ChartPieIcon },
@@ -86,18 +87,12 @@ export default function Header() {
             </Transition>
           </Popover>
 
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Namntävlingar
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Så funkar det
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Om oss
-          </a>
+          <Link href="/tavlingar" className="text-sm font-semibold leading-6 text-gray-900">Namntävlingar</Link>
+          <Link href="/safunkardet" className="text-sm font-semibold leading-6 text-gray-900">Så funkar det</Link>
+          <Link href="/omoss" className="text-sm font-semibold leading-6 text-gray-900">Om oss</Link>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <a href="/api/auth/login" className="text-sm font-semibold leading-6 text-gray-900">
             Logga in <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
