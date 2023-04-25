@@ -95,9 +95,7 @@ export default function Header() {
           <Link href="/omoss" className="text-sm font-semibold leading-6 text-gray-900">Om oss</Link>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          { /* eslint-disable */ }
-            <LoginButton />
-          { /* eslint-enable */ }
+          <LoginButton />
         </div>
       </nav>
 
@@ -140,11 +138,9 @@ export default function Header() {
                 <Link href="/safunkardet" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Så funkar det</Link>
                 <Link href="/omoss" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Om oss</Link>
 
-                { /* eslint-disable */ }
                 <div className="py-6">
                   <LoginButton />
                 </div>
-                { /* eslint-enable */ }
               </div>
             </div>
           </div>
