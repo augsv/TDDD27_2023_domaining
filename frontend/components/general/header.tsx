@@ -12,6 +12,7 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import Image from 'next/image'
+import LoginButton from './loginbutton'
 
 const products = [
   { name: 'Premiumdomäner', description: 'Ett urval av våra högst värdesatta domäner', href: '#', icon: ChartPieIcon },
@@ -95,9 +96,7 @@ export default function Header() {
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           { /* eslint-disable */ }
-          <a href="/api/auth/login" className="text-sm font-semibold leading-6 text-gray-900">
-            Logga in <span aria-hidden="true">&rarr;</span>
-          </a>
+            <LoginButton />
           { /* eslint-enable */ }
         </div>
       </nav>
@@ -140,10 +139,10 @@ export default function Header() {
                 <Link href="/tavlingar" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Namntävlingar</Link>
                 <Link href="/safunkardet" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Så funkar det</Link>
                 <Link href="/omoss" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Om oss</Link>
-                
+
                 { /* eslint-disable */ }
                 <div className="py-6">
-                    <a href="/api/auth/login" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Logga in</a>
+                  <LoginButton />
                 </div>
                 { /* eslint-enable */ }
               </div>
