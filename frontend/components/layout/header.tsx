@@ -12,7 +12,7 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import Image from 'next/image'
-import LoginButton from './loginbutton'
+import LoginButton from '../buttons/loginbutton'
 
 const products = [
   { name: 'Premiumdomäner', description: 'Ett urval av våra högst värdesatta domäner', href: '#', icon: ChartPieIcon },
