@@ -2,21 +2,10 @@ import Card from "@/components/cards/card"
 import SmallHero from "@/components/heros/small"
 import Section from "@/components/layout/section"
 import DomainList from "@/components/lists/domain";
+import { Domain, DomainArray } from "@/types/domain";
 
-export type Domain = {
-    id: number;
-    name: string;
-    price: number;
-    currency: string;
-    createdAt: string;
-    updatedAt: string;
-}
 
-export type MyPageProps = {
-    domains: Domain[];
-}
-
-export default function Domains({ domains }: MyPageProps) {
+export default function Domains({ domains }: DomainArray) {
     const header = "Domäner.";
     const description = "Sök efter domäner nedan."
 

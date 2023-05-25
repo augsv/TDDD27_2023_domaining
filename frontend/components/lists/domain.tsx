@@ -1,11 +1,8 @@
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next';
 import Image from "next/image";
-import { ReactNode } from "react";
 import Card from "../cards/card";
-import { MyPageProps } from '@/pages/domaner';
+import { DomainArray } from '@/types/domain';
 
-
-const DomainList: React.FC<MyPageProps> = ({ domains }) => {
+const DomainList: React.FC<DomainArray> = ({ domains }) => {
 
     return (
         <div className="bg-white">
@@ -14,7 +11,7 @@ const DomainList: React.FC<MyPageProps> = ({ domains }) => {
 
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                     {domains.map((domain, index) => (
-                        <Card key={index} props={domain.name}/>
+                        <Card key={index} domain={domain}/>
                     ))}
                 </div>
             </div>
