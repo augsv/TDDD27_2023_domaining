@@ -1,6 +1,4 @@
-import Card from "@/components/cards/card"
 import SmallHero from "@/components/heros/small"
-import Section from "@/components/layout/section"
 import DomainList from "@/components/lists/domain";
 import { Domain, DomainArray } from "@/types/domain";
 
