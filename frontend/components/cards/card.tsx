@@ -14,7 +14,7 @@ const Card: FC<CardProps> = ({ props }) => {
             <div>
                 <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <a href="#">
-                        <Image className="rounded-t-lg" width={width} height={height} src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
+                        <Image className="rounded-t-lg" width={width} height={height} src="/image-1.jpg" alt="" />
                     </a>
                     <div className="p-5">
                         <a href="#">
