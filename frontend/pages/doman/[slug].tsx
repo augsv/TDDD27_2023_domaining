@@ -36,7 +36,7 @@ export default function Page({ domains }: PageProps) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps() { // TODO: Fetch only one domain by name
   const data = await fetch('http://api.nlu.se/listings');
   const domains: Domain[] = await data.json();
 
