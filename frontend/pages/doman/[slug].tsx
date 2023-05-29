@@ -26,7 +26,7 @@ export default function Page({ domains }: PageProps) {
   const width = 500;
   const height = 500;
 
-  let domain: Domain;
+  let domain: Domain = {"id":1,"name":"test.se","price":40,"currency":"USD","createdAt":"2023-04-10T12:22:34.774Z","updatedAt":"2023-04-10T12:22:34.774Z"}; // TODO: Remove
 
   const router = useRouter();
 
@@ -72,10 +72,8 @@ export default function Page({ domains }: PageProps) {
       </div>
       <div className="px-4 py-2 md:p-8 basis-1/2">
         <div className="flex flex-col justify-center items-center h-full">
-            { /* eslint-disable */ }
             <h1 className="text-center text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">{ domain.name }</h1>
             <h1 className="text-center mb-5 sm:mb-10 text-1xl tracking-tight text-gray-900 sm:text-3xl">{ domain.price + " " + domain.currency }</h1>
-            { /* eslint-enable */ }
             {
               !showCheckout && (
                 <button type="button" onClick={handleCheckoutButtonClick} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 w-52 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Köp</button>
