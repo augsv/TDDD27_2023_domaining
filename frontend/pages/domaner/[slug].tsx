@@ -6,6 +6,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import Image from "next/image";
 import React from 'react';
 import CheckoutForm from '@/components/stripe/checkoutform';
+import Section from '@/components/layout/section';
 
 let stripePromise: Promise<Stripe | null>;
 
@@ -64,31 +65,33 @@ export default function Page({ domains }: PageProps) {
   };
   
   return (
-    <div className="flex md:flex-row flex-col mx-auto max-w-7xl">
-      <div className="p-4 md:p-8 basis-1/2">
-        <div className="aspect-h-1 aspect-w-1 w-50vw overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-            <Image className="h-full w-full object-cover object-center group-hover:opacity-75" width={width} height={height} src="/image-1.jpg" alt="" />
+    <Section height="half">
+      <div className="flex md:flex-row flex-col mx-auto max-w-7xl">
+        <div className="p-4 md:p-8 basis-1/2">
+          <div className="aspect-h-1 aspect-w-1 w-50vw overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+              <Image className="h-full w-full object-cover object-center group-hover:opacity-75" width={width} height={height} src="/image-1.jpg" alt="" />
+          </div>
+        </div>
+        <div className="px-4 py-2 md:p-8 basis-1/2">
+          <div className="flex flex-col justify-center items-center h-full">
+              <h1 className="text-center text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">{ domain.name }</h1>
+              <h1 className="text-center mb-5 sm:mb-10 text-1xl tracking-tight text-gray-900 sm:text-3xl">{ domain.price + " " + domain.currency }</h1>
+              {
+                !showCheckout && (
+                  <button type="button" onClick={handleCheckoutButtonClick} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 w-52 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Köp</button>
+                )
+              }
+              {
+                showCheckout && (
+                  <Elements options={options} stripe={stripePromise}>
+                    <CheckoutForm />
+                  </Elements>
+                )
+              }
+          </div>
         </div>
       </div>
-      <div className="px-4 py-2 md:p-8 basis-1/2">
-        <div className="flex flex-col justify-center items-center h-full">
-            <h1 className="text-center text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">{ domain.name }</h1>
-            <h1 className="text-center mb-5 sm:mb-10 text-1xl tracking-tight text-gray-900 sm:text-3xl">{ domain.price + " " + domain.currency }</h1>
-            {
-              !showCheckout && (
-                <button type="button" onClick={handleCheckoutButtonClick} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 w-52 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Köp</button>
-              )
-            }
-            {
-              showCheckout && (
-                <Elements options={options} stripe={stripePromise}>
-                  <CheckoutForm />
-                </Elements>
-              )
-            }
-        </div>
-      </div>
-    </div>
+    </Section>
   )
 }
 

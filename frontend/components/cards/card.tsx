@@ -11,7 +11,7 @@ const Card: FC<CardProps> = ({ domain }) => {
     const width = 500;
     const height = 500;
 
-    const link = "/doman/" + domain.name.split('.')[0];
+    const link = "/domaner/" + domain.name.split('.')[0];
 
     return (
         <>
