@@ -16,7 +16,7 @@ export default function Domains({ domains }: DomainArray) {
 }
 
 export async function getServerSideProps() {
-    const data = await fetch('http://localhost:8000/listings');
+    const data = await fetch('http://api.nlu.se/listings');
     const domains: Domain[] = await data.json();
 
     return { props: { domains, } }
