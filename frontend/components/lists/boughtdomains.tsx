@@ -26,7 +26,7 @@ const BoughtDomainList: React.FC<{ chargeList: Charge[] }> = ({ chargeList }) =>
         </thead>
         <tbody>
           {chargeList.map((charge, index) => (
-            <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <tr key={index} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
               <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {new Date(charge.created).toLocaleDateString("sv-SE", {
                   timeZone: 'Europe/Stockholm',
