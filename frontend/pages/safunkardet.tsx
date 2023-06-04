@@ -14,13 +14,13 @@ export default function HowItWorks() {
                 <div className="mx-auto max-w-2xl py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                     <LargeTitle text="Så funkar det" />
                     <SmallTitle text="Steg 1: Skapa ett konto" />
-                    <p className="mb-8">{ step1 }</p>
+                    <p className="mb-8 text-black">{ step1 }</p>
                     <SmallTitle text="Steg 2: Köpa ett domännamn" />
-                    <p className="mb-8">{ step2 }</p>
+                    <p className="mb-8 text-black">{ step2 }</p>
                     <SmallTitle text="Steg 3: Överföring av domännamnet" />
-                    <p className="mb-8">{ step3 }</p>
+                    <p className="mb-8 text-black">{ step3 }</p>
                     <SmallTitle text="Steg 4: Bekräfta överföringen" />
-                    <p className="mb-8">{ step4 }</p>
+                    <p className="mb-8 text-black">{ step4 }</p>
                 </div>
             </Section>
         </>
