@@ -2,11 +2,13 @@ import { Domain } from '@/types/domain';
 import { useRouter } from 'next/router';
 import { Appearance, Stripe, StripeElementsOptions, loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { UserProfile, useUser } from '@auth0/nextjs-auth0/client';
 
 import Image from "next/image";
 import React from 'react';
 import CheckoutForm from '@/components/stripe/checkoutform';
 import Section from '@/components/layout/section';
+import { assert } from 'console';
 
 let stripePromise: Promise<Stripe | null>;
 
@@ -38,21 +40,27 @@ export default function Page({ domains }: PageProps) {
     }
   })
 
+  const { user, error, isLoading } = useUser();
+
   const [clientSecret, setClientSecret] = React.useState<string>("");
   const [showCheckout, setShowCheckout] = React.useState<boolean>(false);
 
   const handleCheckoutButtonClick = () => {
-    // Create PaymentIntent as soon as the page loads
-    fetch("/api/stripe/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setClientSecret(data.clientSecret);
-        setShowCheckout(true);
-      });
+    if (user) {
+      fetch("/api/stripe/create-payment-intent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          items: domain,
+          customer: user.sub,
+        })
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setClientSecret(data.clientSecret);
+          setShowCheckout(true);
+        });
+    }
   };
 
   const appearance: Appearance = {
@@ -77,9 +85,14 @@ export default function Page({ domains }: PageProps) {
               <h1 className="text-center text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">{ domain.name }</h1>
               <h1 className="text-center mb-5 sm:mb-10 text-1xl tracking-tight text-gray-900 sm:text-3xl">{ domain.price + " " + domain.currency }</h1>
               {
-                !showCheckout && (
+                !showCheckout && user && (
                   <button type="button" onClick={handleCheckoutButtonClick} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 w-52 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Köp</button>
                 )
+              }
+              { /*
+                !showCheckout && !user && (
+                  <button type="button" onClick={sendUserToLogin} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 w-52 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Logga in för att köpa</button>
+                ) */
               }
               {
                 showCheckout && (
