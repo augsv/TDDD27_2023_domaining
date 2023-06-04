@@ -31,6 +31,10 @@ const Listing = sequelize.define('Listing', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    slug: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     price: {
         type: DataTypes.INTEGER,
         allowNull: false
@@ -38,6 +42,10 @@ const Listing = sequelize.define('Listing', {
     currency: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    soldAt: {
+        type: DataTypes.DATE,
+        allowNull: true
     }
 });
 
@@ -89,13 +97,30 @@ app.get('/listings/:id', async (req, res) => {
 });
 
 // Update a listing by ID
-app.put('/listings/:id', async (req, res) => {
+/* app.put('/listings/:id', async (req, res) => {
     const { id } = req.params;
     const { name, price, currency } = req.body;
     try {
         const updatedListing = await Listing.update({ name, price, currency }, { where: { id } });
         if (updatedListing[0] === 0) {
             res.status(404).send(`listing with ID ${id} not found`);
+        } else {
+            res.sendStatus(204);
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error deleting message');
+    }
+}); */
+
+// Update a listing by slug
+app.put('/listings/:slug', async (req, res) => {
+    const { slug } = req.params;
+    const { name, price, currency, soldAt } = req.body;
+    try {
+        const updatedListing = await Listing.update({ name, price, currency, soldAt }, { where: { slug } });
+        if (updatedListing[0] === 0) {
+            res.status(404).send(`listing with slug ${soldAt} not found`);
         } else {
             res.sendStatus(204);
         }
