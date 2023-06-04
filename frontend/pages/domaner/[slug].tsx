@@ -89,10 +89,10 @@ export default function Page({ domains }: PageProps) {
                   <button type="button" onClick={handleCheckoutButtonClick} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 w-52 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Köp</button>
                 )
               }
-              { /*
+              {
                 !showCheckout && !user && (
-                  <button type="button" onClick={sendUserToLogin} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 w-52 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Logga in för att köpa</button>
-                ) */
+                  <button type="button" className="text-white bg-blue-700 font-medium rounded-lg text-sm px-5 py-2.5 w-52" disabled>Logga in för att köpa</button>
+                )
               }
               {
                 showCheckout && (
@@ -109,7 +109,7 @@ export default function Page({ domains }: PageProps) {
 }
 
 export async function getServerSideProps() { // TODO: Fetch only one domain by name
-  const data = await fetch('http://api.nlu.se/listings');
+  const data = await fetch('http://localhost:8000/listings');
   const domains: Domain[] = await data.json();
 
   return { props: { domains } }
