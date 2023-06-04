@@ -9,9 +9,11 @@ const DomainList: React.FC<DomainArray> = ({ domains }) => {
                 <h2 className="sr-only">Products</h2>
 
                 <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                    {domains.map((domain, index) => (
-                        <Card key={index} domain={domain}/>
-                    ))}
+                    {domains.map((domain, index) => {
+                        if (!domain.soldAt) {
+                            return <Card key={index} domain={domain}/>
+                        }
+                    })}
                 </div>
             </div>
         </div>

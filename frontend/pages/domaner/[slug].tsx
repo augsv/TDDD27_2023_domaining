@@ -29,7 +29,7 @@ export default function Page({ domains }: PageProps) {
   const width = 500;
   const height = 500;
 
-  let domain: Domain = {"id":1,"name":"test.se","price":40,"currency":"USD","createdAt":"2023-04-10T12:22:34.774Z","updatedAt":"2023-04-10T12:22:34.774Z"}; // TODO: Remove
+  let domain: Domain = {"id":1,"name":"test.se", "slug": "test", "price":40,"currency":"USD","createdAt":"2023-04-10T12:22:34.774Z","updatedAt":"2023-04-10T12:22:34.774Z"}; // TODO: Remove
 
   const router = useRouter();
 
@@ -109,7 +109,7 @@ export default function Page({ domains }: PageProps) {
 }
 
 export async function getServerSideProps() { // TODO: Fetch only one domain by name
-  const data = await fetch('http://localhost:8000/listings');
+  const data = await fetch('http://api.nlu.se/listings');
   const domains: Domain[] = await data.json();
 
   return { props: { domains } }
