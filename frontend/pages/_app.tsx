@@ -1,4 +1,4 @@
-import Layout from '@/components/general/layout'
+import Layout from '@/components/layout/layout'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { UserProvider } from '@auth0/nextjs-auth0/client';
