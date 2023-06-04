@@ -15,13 +15,13 @@ export default function About() {
         <Section height="half">
             <div className="mx-auto max-w-2xl py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
                 <LargeTitle text="Om oss" />
-                <p className="mb-4"> {firstParagraph} </p>
-                <p className="mb-4"> {secondParagraph} </p>
-                <p className="mb-4"> {thirdParagraph} </p>
-                <p className="mb-4"> {fourthParagraph} </p>
-                <p className="mb-8"> {fifthParagraph} </p>
-                <p> {sixthParagraph} </p>
-                <p> {seventhParagraph} </p>
+                <p className="mb-4 text-black"> {firstParagraph} </p>
+                <p className="mb-4 text-black"> {secondParagraph} </p>
+                <p className="mb-4 text-black"> {thirdParagraph} </p>
+                <p className="mb-4 text-black"> {fourthParagraph} </p>
+                <p className="mb-8 text-black"> {fifthParagraph} </p>
+                <p className="text-black"> {sixthParagraph} </p>
+                <p className="text-black"> {seventhParagraph} </p>
             </div>
         </Section>
     )
