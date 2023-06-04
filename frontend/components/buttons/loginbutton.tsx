@@ -1,4 +1,5 @@
 import { useUser } from '@auth0/nextjs-auth0/client';
+import Link from 'next/link';
 
 export default function LoginButton() {
     const { user, isLoading, error } = useUser();
@@ -14,7 +15,7 @@ export default function LoginButton() {
     if (user) {
         return (
             <div className="flex flex-col">
-                <div className="text-sm font-semibold leading-6 text-gray-900">{user.name}</div>
+                <Link href="/profil" className="text-sm font-semibold leading-6 text-gray-900">{user.name}</Link>
                 { /* eslint-disable */ }
                 <a href="/api/auth/logout" className="float-right text-sm font-semibold leading-6 text-gray-900">
                     <span aria-hidden="true" className="lg:float-right">&rarr;</span>
