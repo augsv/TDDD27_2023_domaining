@@ -1,3 +1,10 @@
+## Link to project screencast
+https://liuonline-my.sharepoint.com/:v:/g/personal/augsv102_student_liu_se/EeTgEkHUaDBMqpvKHu1taaYBg58KHrI2-T0s50T2se_qBQ?e=xODTK3
+
+## Link to code screencast
+https://liuonline-my.sharepoint.com/:v:/g/personal/augsv102_student_liu_se/ESu-mw7dUuFFu2grDS0PQoMBcken_4uwnDT06fdlXBsUNA?e=wv81cR 
+
+
 # TDDD27_2023_domaining
 
 Important! This is a pull mirror of a github repository with the same name. It was needed because the CI/CD runners in gitlab.liu.se does not seem to be configured to be able to deploy to external services.
